@@ -7,10 +7,16 @@ import {
   VIDEO_COMPLETE
 } from "./types";
 
-// TODO: Communicate to MainWindow process that videos
-// have been added and are pending conversion
-export const addVideos = videos => dispatch => {
+const { ipcRenderer } = window.require('electron');
 
+export const addVideos = videos => dispatch => {
+  ipcRenderer.send('videos:added', videos);
+  ipcRenderer.on('metadata:complete', (ev, videosData) => {
+    dispatch({
+      type: ADD_VIDEOS,
+      payload: videosData
+    });
+  });
 };
 
 // TODO: Communicate to MainWindow that the user wants
