@@ -57,3 +57,17 @@ ipcMain.on('videos:added', (ev, videos) => {
            mainWindow.webContents.send('metadata:complete', results)
          });
 });
+
+ipcMain.on('conversion:start', (ev, videos) => {
+  _.each(videos, video => {
+    const outputDirectory = video.path.split(video.name)[0];
+    const outputName = video.name.split('.')[0];
+    const outputPath = `${outputDirectory}${outputName}.${video.format}`;
+
+    ffmpeg(video.path)
+        .output(outputPath)
+        .on('end', () =>
+            mainWindow.webContents.send('conversion:end', { video, outputPath }))
+        .run()
+  });
+});
