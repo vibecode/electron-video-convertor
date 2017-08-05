@@ -4,7 +4,7 @@ const url = require('url');
 const ffmpeg = require('fluent-ffmpeg');
 const _ = require('lodash');
 
-const { app, BrowserWindow, ipcMain } = electron;
+const { app, BrowserWindow, ipcMain, shell } = electron;
 
 let mainWindow;
 
@@ -76,4 +76,8 @@ ipcMain.on('conversion:start', (ev, videos) => {
         )
         .run();
   });
+});
+
+ipcMain.on('folder:open', (ev, outputPath) => {
+  shell.showItemInFolder(outputPath);
 });
