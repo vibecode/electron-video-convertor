@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class VideoSelectScreen extends Component {
-  state = {
-    hovering: false
-  };
-
   onDrop = (files) => {
     // invalid file types are not added to files object
     const videos = _.map(files, ({ name, path, size, type }) => {

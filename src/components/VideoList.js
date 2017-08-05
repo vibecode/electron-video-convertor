@@ -2,7 +2,6 @@ import _ from 'lodash';
 import moment from 'moment';
 import 'moment-duration-format';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 const VIDEO_FORMATS = [
   { value: 'avi', option: 'AVI' },
@@ -15,7 +14,7 @@ const VIDEO_FORMATS = [
 
 class VideoList extends Component {
 
-  showStatus({ complete, timemark, outputPath, err }) {
+  showStatus({ complete, outputPath, err }) {
     if (complete) {
       return (
           <button onClick={() => this.props.onFolderOpen(outputPath)} className="btn">
