@@ -63,14 +63,17 @@ ipcMain.on('conversion:start', (ev, videos) => {
     const outputDirectory = video.path.split(video.name)[0];
     const outputName = video.name.split('.')[0];
     const outputPath = `${outputDirectory}${outputName}.${video.format}`;
+    console.log(outputDirectory);
+    console.log(outputPath);
 
     ffmpeg(video.path)
         .output(outputPath)
-        .on('progress', ({ timemark }) => {
-          mainWindow.webContents.send('conversion:progress', { video, timemark })
-        })
+        .on('progress', ({ timemark }) =>
+            mainWindow.webContents.send('conversion:progress', { video, timemark })
+        )
         .on('end', () =>
-            mainWindow.webContents.send('conversion:end', { video, outputPath }))
-        .run()
+            mainWindow.webContents.send('conversion:end', { video, outputPath })
+        )
+        .run();
   });
 });

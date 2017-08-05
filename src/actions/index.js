@@ -10,6 +10,7 @@ import {
 const { ipcRenderer } = window.require('electron');
 
 export const addVideos = videos => dispatch => {
+  console.log(videos);
   ipcRenderer.send('videos:added', videos);
   ipcRenderer.on('metadata:complete', (ev, videosData) => {
     dispatch({
@@ -20,6 +21,7 @@ export const addVideos = videos => dispatch => {
 };
 
 export const convertVideos = videos => dispatch => {
+  console.log(videos);
   ipcRenderer.send('conversion:start', videos);
   ipcRenderer.on('conversion:end', (ev, { video, outputPath }) => {
     dispatch(

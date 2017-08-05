@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import _ from 'lodash';
 import * as actions from '../actions';
 
 class ConvertPanel extends Component {
@@ -16,7 +16,7 @@ class ConvertPanel extends Component {
           <button className="btn red" onClick={this.onCancelPressed}>
             Cancel
           </button>
-          <button className="btn" onClick={this.props.convertVideos}>
+          <button className="btn" onClick={this.props.convertVideos.bind(null, this.props.videos)}>
             Convert!
           </button>
         </div>
@@ -24,6 +24,9 @@ class ConvertPanel extends Component {
   };
 }
 
-export default withRouter(
-    connect(null, actions)(ConvertPanel)
-);
+function mapStateToProps(state) {
+  const videos = _.map(state.videos);
+  return { videos };
+}
+
+export default connect(mapStateToProps, actions)(ConvertPanel);
