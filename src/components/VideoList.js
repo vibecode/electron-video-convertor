@@ -2,15 +2,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import 'moment-duration-format';
 import React, { Component } from 'react';
-
-const VIDEO_FORMATS = [
-  { value: 'avi', option: 'AVI' },
-  { value: 'm4v', option: 'M4V raw MPEG-4' },
-  { value: 'mov', option: 'MOV / QuickTime' },
-  { value: 'mp4', option: 'MP4 / QuickTime' },
-  { value: 'mpeg', option: 'MPEG' },
-  { value: 'ogv', option: 'OGV' },
-];
+import VIDEO_FORMATS from '../constants/videoFormats';
 
 class VideoList extends Component {
 
@@ -53,12 +45,15 @@ class VideoList extends Component {
               <select
                   className={complete || timemark ? "hidden" : "browser-default right"}
                   value={format}
-                  onChange={e => this.props.onFormatChange(video, e.target.value)}
-              >
+                  onChange={e => this.props.onFormatChange(video, e.target.value)} >
                 {VIDEO_FORMATS.map(outFormat => (
-                    <option key={outFormat.value} value={outFormat.value}>{outFormat.option}</option>
+                    <option
+                        key={outFormat.value}
+                        value={outFormat.value}>{outFormat.option}
+                    </option>
                 ))}
               </select>
+
               {this.showStatus({ complete, timemark, outputPath, err })}
             </div>
           </li>

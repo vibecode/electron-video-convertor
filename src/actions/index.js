@@ -5,7 +5,7 @@ import {
   REMOVE_ALL_VIDEOS,
   VIDEO_PROGRESS,
   VIDEO_COMPLETE
-} from "./types";
+} from "../constants/actionTypes";
 
 const { ipcRenderer } = window.require('electron');
 
