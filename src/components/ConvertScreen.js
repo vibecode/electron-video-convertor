@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import VideoList from '../components/VideoList';
-import ConvertPanel from '../components/ConvertPanel';
+import VideoList from './VideoList';
+import ConvertPanel from './ConvertPanel';
 import VideoSelectScreen from './VideoSelectScreen';
-import { setFormat, removeVideo, showInFolder } from '../actions';
+import { setFormat, removeVideo, showInFolder } from '../actions/index';
 
 class ConvertScreen extends Component {
   render() {

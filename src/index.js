@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 
 import store from './reducers';
 
-import VideoSelectScreen from './screens/VideoSelectScreen';
-import ConvertScreen from './screens/ConvertScreen';
+import VideoSelectScreen from './components/VideoSelectScreen';
+import ConvertScreen from './components/ConvertScreen';
 
 ReactDOM.render(
     <Provider store={store}>
