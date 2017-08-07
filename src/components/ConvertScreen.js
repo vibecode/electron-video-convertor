@@ -4,6 +4,7 @@ import VideoList from './VideoList';
 import ConvertPanel from './ConvertPanel';
 import VideoSelectScreen from './VideoSelectScreen';
 import { setFormat, removeVideo, showInFolder } from '../actions/index';
+import './ConvertScreen.css';
 
 class ConvertScreen extends Component {
   render() {
@@ -14,9 +15,7 @@ class ConvertScreen extends Component {
               videos={this.props.videos}
               onFormatChange={this.props.setFormat}
               onFolderOpen={this.props.showInFolder}
-              removeVideo={this.props.removeVideo}
-
-          />
+              removeVideo={this.props.removeVideo} />
           <ConvertPanel />
         </div>
     );

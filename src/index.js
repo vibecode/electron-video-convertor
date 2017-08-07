@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
 import store from './reducers';
 
 import VideoSelectScreen from './components/VideoSelectScreen';

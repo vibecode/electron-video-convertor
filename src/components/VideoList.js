@@ -3,6 +3,7 @@ import moment from 'moment';
 import 'moment-duration-format';
 import React, { Component } from 'react';
 import VIDEO_FORMATS from '../constants/videoFormats';
+import './VideoList.css';
 
 class VideoList extends Component {
 
