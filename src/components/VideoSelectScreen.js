@@ -7,7 +7,6 @@ import './VideoSelectScreen.css';
 
 class VideoSelectScreen extends Component {
   onDrop = (files) => {
-    // invalid file types are not added to files object
     const videos = _.map(files, ({ name, path, size, type }) => {
       return { name, path, size, type };
     });
@@ -19,18 +18,13 @@ class VideoSelectScreen extends Component {
         this.props.history.push('/convert');
       }
     }
-
   };
 
-  renderChildren({ isDragActive, isDragReject }) {
-    if (isDragActive) {
-      return <h4 className="drop-message">Omnomnom, let me have those videos!</h4>;
-    } else if (isDragReject) {
-      return <h4 className="drop-message">Uh oh, I don't know how to deal with that type of file!</h4>;
-    } else {
-      return <h4 className="drop-message">Drag and drop some files on me, or click to select.</h4>
-    }
-  }
+  renderChildren({ isDragReject }) {
+    return isDragReject ?
+           <h4 className="drop-message">Oops, I don't know how to deal with that type of file!</h4> :
+           <h4 className="drop-message">Drag and drop some files here, or just click to select.</h4>;
+  };
 
   render() {
     return (
@@ -41,7 +35,7 @@ class VideoSelectScreen extends Component {
               accept="video/*"
               className="dropzone"
               activeClassName="dropzone-active"
-              rejectClassName="dropzone-reject" >
+              rejectClassName="dropzone-reject">
             {this.renderChildren}
           </Dropzone>
         </div>

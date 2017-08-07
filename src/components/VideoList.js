@@ -6,7 +6,6 @@ import VIDEO_FORMATS from '../constants/videoFormats';
 import './VideoList.css';
 
 class VideoList extends Component {
-
   showStatus({ complete, outputPath, err }) {
     if (complete) {
       return (
@@ -34,6 +33,7 @@ class VideoList extends Component {
     return _.map(this.props.videos, video => {
       const { name, path, duration, format, timemark, complete, outputPath, err } = video;
       const formatedDuration = moment.duration(duration, 's').format("hh:mm:ss", { trim: false });
+
       return (
           <li className="collection-item avatar" key={path}>
             <div style={{ ...styles.progressBar, right: this.renderProgressBar(video) }} />
@@ -47,6 +47,7 @@ class VideoList extends Component {
                   className={complete || timemark ? "hidden" : "browser-default right"}
                   value={format}
                   onChange={e => this.props.onFormatChange(video, e.target.value)} >
+
                 {VIDEO_FORMATS.map(outFormat => (
                     <option
                         key={outFormat.value}
@@ -55,7 +56,7 @@ class VideoList extends Component {
                 ))}
               </select>
 
-              {this.showStatus({ complete, timemark, outputPath, err })}
+              {this.showStatus({ complete, outputPath, err })}
             </div>
           </li>
       );

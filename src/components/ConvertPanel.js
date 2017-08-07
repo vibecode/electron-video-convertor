@@ -5,8 +5,11 @@ import * as actions from '../actions';
 import './ConvertPanel.css';
 
 class ConvertPanel extends Component {
+  onConvertClick = () => {
+    this.props.convertVideos(this.props.videos);
+  };
 
-  onCancelPressed = () => {
+  onCancelClicked = () => {
     this.props.removeAllVideos();
     this.props.history.push('/');
   };
@@ -14,10 +17,10 @@ class ConvertPanel extends Component {
   render() {
     return (
         <div className="convert-panel">
-          <button className="btn red" onClick={this.onCancelPressed}>
+          <button className="btn red" onClick={this.onCancelClicked}>
             Cancel
           </button>
-          <button className="btn" onClick={this.props.convertVideos.bind(null, this.props.videos)}>
+          <button className="btn" onClick={this.onConvertClick}>
             Convert!
           </button>
         </div>

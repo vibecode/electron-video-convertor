@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './reducers';
-
 import VideoSelectScreen from './components/VideoSelectScreen';
 import ConvertScreen from './components/ConvertScreen';
 
@@ -20,3 +19,4 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+
