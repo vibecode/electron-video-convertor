@@ -11,7 +11,7 @@ ReactDOM.render(
       <Router>
         <div className="app">
           <Switch>
-            <Route path="/" component={VideoSelectScreen} />
+            <Route path="/" exact component={VideoSelectScreen} />
             <Route path="/convert" component={ConvertScreen} />
           </Switch>
         </div>
