@@ -25,13 +25,14 @@
 }
 
 .dropzone-active {
-  border-style: solid;
-  background-color: #66bb6a
+  background-color: #66bb6a;
+  color: white;
 }
 
 .dropzone-reject {
-  border-style: solid;
-  background-color: #e57373;
+  border-style: none;
+  background-color: #F44336;
+  color: white;
 }
 
 .drop-message {
