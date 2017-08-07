@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import _ from 'lodash';
 import * as actions from '../actions';
 import './ConvertPanel.css';
@@ -33,4 +34,4 @@ function mapStateToProps(state) {
   return { videos };
 }
 
-export default connect(mapStateToProps, actions)(ConvertPanel);
+export default withRouter(connect(mapStateToProps, actions)(ConvertPanel));
